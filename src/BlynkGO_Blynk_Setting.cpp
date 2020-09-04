@@ -51,7 +51,7 @@ void BlynkGO_Manager::blynk_setting(bool standalone){
     blynkgo_manager_ext_t* ext= (blynkgo_manager_ext_t*) pManager->ext_attr();
     if(ext->child_setting_standalone) pManager->hidden(true);
 
-    ext->obj_blynk_setting->del();       free_widget(ext->obj_blynk_setting);
+    free_widget(ext->obj_blynk_setting);
 
     // ขยายเวลาให้ unlock หาก system keylock เป็นโหมด lock
     if( NVS.getInt("KeyLock") ){
@@ -163,15 +163,15 @@ void BlynkGO_Manager::blynk_setting(bool standalone){
     blynkgo_manager_ext_t* ext = (blynkgo_manager_ext_t*)  pManager->ext_attr();
 
   
-    ext->ta_blynk_auth->del();          free_widget(ext->ta_blynk_auth);
-    ext->ta_blynk_port->del();          free_widget(ext->ta_blynk_port);//(obj_blynk_setting);
-    ext->ta_blynk_host->del();          free_widget(ext->ta_blynk_host);//(obj_blynk_setting);
-    ext->lb_blynk_auth_info->del();     free_widget(ext->lb_blynk_auth_info);//("Blynk Auth", obj_blynk_setting);
-    ext->lb_blynk_port_info->del();     free_widget(ext->lb_blynk_port_info);//("Blynk Port", obj_blynk_setting);
-    ext->lb_blynk_host_info->del();     free_widget(ext->lb_blynk_host_info);//("Blynk Host", obj_blynk_setting);
-    ext->page_blynk_setting_body->del();free_widget(ext->page_blynk_setting_body);
-    ext->lb_blynk_setting_title->del(); free_widget(ext->lb_blynk_setting_title);//("ตั้งค่า Blynk", obj_blynk_setting);
-    ext->lb_blynk_setting_back->del();  free_widget(ext->lb_blynk_setting_back);//("  " SYMBOL_ARROW_LEFT "  ", obj_blynk_setting );
+    free_widget(ext->ta_blynk_auth);
+    free_widget(ext->ta_blynk_port);
+    free_widget(ext->ta_blynk_host);
+    free_widget(ext->lb_blynk_auth_info);
+    free_widget(ext->lb_blynk_port_info);
+    free_widget(ext->lb_blynk_host_info);
+    free_widget(ext->page_blynk_setting_body);
+    free_widget(ext->lb_blynk_setting_title);
+    free_widget(ext->lb_blynk_setting_back);
 
 
     if(ext->obj_blynk_setting->hasLocalStyle()) {ext->obj_blynk_setting->freeLocalStyle(); } //pIcon->_has_localstyle = false; } // 

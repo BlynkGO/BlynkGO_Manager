@@ -39,7 +39,7 @@ void BlynkGO_Manager::line_setting(bool standalone){
     blynkgo_manager_ext_t* ext= (blynkgo_manager_ext_t*) pManager->ext_attr();
     if(ext->child_setting_standalone) pManager->hidden(true);
 
-    ext->obj_line_setting->del();       free_widget(ext->obj_line_setting);
+    free_widget(ext->obj_line_setting);
 
     // ขยายเวลาให้ unlock หาก system keylock เป็นโหมด lock
     if( NVS.getInt("KeyLock") ){
@@ -94,10 +94,10 @@ static lv_res_t linenotify_setting_signal_cb(lv_obj_t *obj, lv_signal_t sign, vo
     BlynkGO_Manager* pManager = (BlynkGO_Manager*) obj_line_setting->_par;
     blynkgo_manager_ext_t* ext = (blynkgo_manager_ext_t*)  pManager->ext_attr();
 
-    ext->ta_line_token->del();          free_widget(ext->ta_line_token);
-    ext->lb_line_token_info->del();     free_widget(ext->lb_line_token_info);
-    ext->lb_line_setting_title->del();  free_widget(ext->lb_line_setting_title);
-    ext->lb_line_setting_back->del();   free_widget(ext->lb_line_setting_back);
+    free_widget(ext->ta_line_token);
+    free_widget(ext->lb_line_token_info);
+    free_widget(ext->lb_line_setting_title);
+    free_widget(ext->lb_line_setting_back);
 
     if(ext->obj_line_setting->hasLocalStyle()) {ext->obj_line_setting->freeLocalStyle(); } //pIcon->_has_localstyle = false; } // 
     ext->obj_line_setting->_created = false;

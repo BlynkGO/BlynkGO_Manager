@@ -48,7 +48,7 @@ void BlynkGO_Manager::ntp_setting(bool standalone){
     blynkgo_manager_ext_t* ext= (blynkgo_manager_ext_t*) pManager->ext_attr();
     if(ext->child_setting_standalone) pManager->hidden(true);
 
-    ext->obj_ntp_setting->del();       free_widget(ext->obj_ntp_setting);
+    free_widget(ext->obj_ntp_setting);
 
     // ขยายเวลาให้ unlock หาก system keylock เป็นโหมด lock
     if( NVS.getInt("KeyLock") ){
@@ -171,15 +171,15 @@ static lv_res_t ntp_setting_signal_cb(lv_obj_t *obj, lv_signal_t sign, void* par
     BlynkGO_Manager* pManager = (BlynkGO_Manager*) obj_ntp_setting->_par;
     blynkgo_manager_ext_t* ext = (blynkgo_manager_ext_t*)  pManager->ext_attr();
 
-    ext->lb_ntp_setting_back->del();      free_widget(ext->lb_ntp_setting_back);
-    ext->lb_ntp_setting_title->del();     free_widget(ext->lb_ntp_setting_title);
-    ext->page_ntp_seting_body->del();     free_widget(ext->page_ntp_seting_body);
-    ext->lb_ntp_server_info->del();       free_widget(ext->lb_ntp_server_info);
-    ext->lb_ntp_timezone_info->del();     free_widget(ext->lb_ntp_timezone_info);
-    ext->lb_ntp_daylight_info ->del();    free_widget(ext->lb_ntp_daylight_info);
-    ext->ta_ntp_server->del();            free_widget(ext->ta_ntp_server);
-    ext->ta_ntp_timezone->del();          free_widget(ext->ta_ntp_timezone);
-    ext->ta_ntp_daylight->del();          free_widget(ext->ta_ntp_daylight);
+    free_widget(ext->lb_ntp_setting_back);
+    free_widget(ext->lb_ntp_setting_title);
+    free_widget(ext->page_ntp_seting_body);
+    free_widget(ext->lb_ntp_server_info);
+    free_widget(ext->lb_ntp_timezone_info);
+    free_widget(ext->lb_ntp_daylight_info);
+    free_widget(ext->ta_ntp_server);
+    free_widget(ext->ta_ntp_timezone);
+    free_widget(ext->ta_ntp_daylight);
 
 
     if(ext->obj_ntp_setting->hasLocalStyle()) {ext->obj_ntp_setting->freeLocalStyle(); } //pIcon->_has_localstyle = false; } // 

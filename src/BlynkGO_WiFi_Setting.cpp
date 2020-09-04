@@ -47,7 +47,7 @@ void BlynkGO_Manager::wifi_setting(bool standalone){
     blynkgo_manager_ext_t* ext= (blynkgo_manager_ext_t*) pManager->ext_attr();
     if(ext->child_setting_standalone) pManager->hidden(true);
 
-    ext->obj_wifi_setting->del();       free_widget(ext->obj_wifi_setting);
+    free_widget(ext->obj_wifi_setting);
 
     // ขยายเวลาให้ unlock หาก system keylock เป็นโหมด lock
     if( NVS.getInt("KeyLock") ){
@@ -226,18 +226,18 @@ static lv_res_t wifi_setting_signal_cb(lv_obj_t *obj, lv_signal_t sign, void* pa
     BlynkGO_Manager* pManager = (BlynkGO_Manager*) obj_wifi_setting->_par;
     blynkgo_manager_ext_t* ext = (blynkgo_manager_ext_t*)  pManager->ext_attr();
     
-    ext->btn_wifi_qrcode->del();        free_widget(ext->btn_wifi_qrcode);
-    ext->btn_wifi_info->del();          free_widget(ext->btn_wifi_info);
-    ext->cont_buttons->del();           free_widget(ext->cont_buttons);
+    free_widget(ext->btn_wifi_qrcode);
+    free_widget(ext->btn_wifi_info);
+    free_widget(ext->cont_buttons);
 
-    ext->btn_wifiscan->del();           free_widget(ext->btn_wifiscan);
-    ext->ta_password->del();            free_widget(ext->ta_password);
-    ext->ta_ssid->del();                free_widget(ext->ta_ssid);
-    ext->lb_pass_info->del();           free_widget(ext->lb_pass_info);
-    ext->lb_ssid_info->del();           free_widget(ext->lb_ssid_info);
-    ext->page_wifi_setting_body->del(); free_widget(ext->page_wifi_setting_body);
-    ext->lb_wifi_setting_title->del();  free_widget(ext->lb_wifi_setting_title);
-    ext->lb_wifi_setting_back->del();   free_widget(ext->lb_wifi_setting_back);
+    free_widget(ext->btn_wifiscan);
+    free_widget(ext->ta_password);
+    free_widget(ext->ta_ssid);
+    free_widget(ext->lb_pass_info);
+    free_widget(ext->lb_ssid_info);
+    free_widget(ext->page_wifi_setting_body);
+    free_widget(ext->lb_wifi_setting_title);
+    free_widget(ext->lb_wifi_setting_back);
 
     if(ext->obj_wifi_setting->hasLocalStyle()) {ext->obj_wifi_setting->freeLocalStyle(); } //pIcon->_has_localstyle = false; } // 
     ext->obj_wifi_setting->_created = false;

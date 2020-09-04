@@ -49,7 +49,7 @@ void BlynkGO_Manager::gps_setting(bool standalone){
     blynkgo_manager_ext_t* ext= (blynkgo_manager_ext_t*) pManager->ext_attr();
     if(ext->child_setting_standalone) pManager->hidden(true);
 
-    ext->obj_gps_setting->del();       free_widget(ext->obj_gps_setting);
+    free_widget(ext->obj_gps_setting);
 
     // ขยายเวลาให้ unlock หาก system keylock เป็นโหมด lock
     if( NVS.getInt("KeyLock") ){
@@ -140,14 +140,14 @@ static lv_res_t gps_setting_signal_cb(lv_obj_t *obj, lv_signal_t sign, void* par
     BlynkGO_Manager* pManager = (BlynkGO_Manager*) obj_gps_setting->_par;
     blynkgo_manager_ext_t* ext = (blynkgo_manager_ext_t*)  pManager->ext_attr();
 
-    ext->lb_gps_setting_back->del();  free_widget(ext->lb_gps_setting_back);
-    ext->lb_gps_setting_title->del(); free_widget(ext->lb_gps_setting_title);
+    free_widget(ext->lb_gps_setting_back);
+    free_widget(ext->lb_gps_setting_title);
 
-    ext->lb_gps_lat_info->del();      free_widget(ext->lb_gps_lat_info);
-    ext->lb_gps_long_info->del();     free_widget(ext->lb_gps_long_info);
-    ext->ta_gps_lat->del();           free_widget(ext->ta_gps_lat);
-    ext->ta_gps_long->del();          free_widget(ext->ta_gps_long);
-    ext->page_gps_setting_body->del();free_widget(ext->page_gps_setting_body);
+    free_widget(ext->lb_gps_lat_info);
+    free_widget(ext->lb_gps_long_info);
+    free_widget(ext->ta_gps_lat);
+    free_widget(ext->ta_gps_long);
+    free_widget(ext->page_gps_setting_body);
 
     if(ext->obj_gps_setting->hasLocalStyle()) {ext->obj_gps_setting->freeLocalStyle(); } //pIcon->_has_localstyle = false; } // 
     ext->obj_gps_setting->_created = false;

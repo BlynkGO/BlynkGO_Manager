@@ -36,7 +36,7 @@ void BlynkGO_Manager::blynkgo_about(bool standalone){
     blynkgo_manager_ext_t* ext= (blynkgo_manager_ext_t*) pManager->ext_attr();
     if(ext->child_setting_standalone) pManager->hidden(true);
 
-    ext->obj_blynkgo_about->del(); free_widget(ext->obj_blynkgo_about);
+    free_widget(ext->obj_blynkgo_about);
     MEM_CHECK;
   });
 
@@ -99,9 +99,9 @@ static lv_res_t blynkgo_about_signal_cb(lv_obj_t *obj, lv_signal_t sign, void* p
     BlynkGO_Manager* pManager = (BlynkGO_Manager*) obj_blynkgo_about->_par;
     blynkgo_manager_ext_t* ext = (blynkgo_manager_ext_t*)  pManager->ext_attr();
     
-    ext->anim->del();										free(ext->anim); ext->anim = NULL;
-    ext->img_blynkgo_logo->del();       free_widget(ext->img_blynkgo_logo);
-    ext->lb_blynkgo_text->del();        free_widget(ext->lb_blynkgo_text);
+    ext->anim->del(); free(ext->anim); ext->anim = NULL;
+    free_widget(ext->img_blynkgo_logo);
+    free_widget(ext->lb_blynkgo_text);
 
     if(ext->obj_blynkgo_about->hasLocalStyle()) {ext->obj_blynkgo_about->freeLocalStyle(); } //pIcon->_has_localstyle = false; } // 
     ext->obj_blynkgo_about->_created = false;

@@ -406,8 +406,8 @@ void BlynkGO_Manager::run(){
         ext->obj_wifiscan->onClicked([](GWidget* w){
           blynkgo_manager_ext_t* ext= (blynkgo_manager_ext_t*) w->user_data();
 
-          ext->lb_wifiscan->del();    free_widget(ext->lb_wifiscan);
-          ext->obj_wifiscan->del();   free_widget(ext->obj_wifiscan);
+          free_widget(ext->lb_wifiscan);
+          free_widget(ext->obj_wifiscan);
           MEM_CHECK;
 
           ext->btn_wifiscan->mode(BUTTON_MODE_NORMAL);
@@ -436,8 +436,8 @@ void BlynkGO_Manager::run(){
           int index = item_selected.lastIndexOf(" (");
           ext->ta_ssid->text( (index )? item_selected.substring(0, index) : item_selected );
 
-          ext->list_wifiscan->del();  free_widget(ext->list_wifiscan);
-          ext->obj_wifiscan->del();   free_widget(ext->obj_wifiscan);
+          free_widget(ext->list_wifiscan);
+          free_widget(ext->obj_wifiscan);
 
           ext->btn_wifiscan->mode(BUTTON_MODE_NORMAL);
           pManager->wifi_setting_clickable(true);
@@ -469,7 +469,7 @@ void BlynkGO_Manager::run(){
         ext->list_wifiscan->hidden(false);
       }else{
         // Serial.println("Error can't add item to GList");
-        ext->list_wifiscan->del();  free_widget(ext->list_wifiscan);
+        free_widget(ext->list_wifiscan);
 
         ext->lb_wifiscan = new_GLabel(ext->obj_wifiscan);
         ext->lb_wifiscan->text( "เกิดข้อผิดพลาด \nปิดแล้วเปิด WiFi ของคุณ ใหม่" );
@@ -479,8 +479,8 @@ void BlynkGO_Manager::run(){
         ext->obj_wifiscan->onClicked([](GWidget* w){
           blynkgo_manager_ext_t* ext= (blynkgo_manager_ext_t*) w->user_data();
 
-          ext->lb_wifiscan->del();    free_widget(ext->lb_wifiscan);
-          ext->obj_wifiscan->del();   free_widget(ext->obj_wifiscan);
+          free_widget(ext->lb_wifiscan);
+          free_widget(ext->obj_wifiscan);
 
           MEM_CHECK;
 
@@ -509,8 +509,8 @@ void BlynkGO_Manager::run(){
       ext->obj_wifiscan->user_data(ext);
       ext->obj_wifiscan->onClicked([](GWidget* w){
         blynkgo_manager_ext_t* ext= (blynkgo_manager_ext_t*) w->user_data();
-        ext->lb_wifiscan->del();    free_widget(ext->lb_wifiscan);
-        ext->obj_wifiscan->del();   free_widget(ext->obj_wifiscan);
+        free_widget(ext->lb_wifiscan);
+        free_widget(ext->obj_wifiscan);
         MEM_CHECK;
         pManager->wifi_setting_clickable(true);
       });
@@ -539,7 +539,7 @@ void BlynkGO_Manager::run(){
 
       blynkgo_manager_ext_t* ext = (blynkgo_manager_ext_t*) this->ext_attr();
       
-      ext->keyunlocker->del(); free_widget(ext->keyunlocker);
+      free_widget(ext->keyunlocker);
       MEM_CHECK;
     }
 #if defined (TOUCH_SCREEN)
@@ -647,9 +647,9 @@ static lv_res_t GSignal_cb(lv_obj_t *obj, lv_signal_t sign, void* param)
 
     blynkgo_manager_ext_t* ext = (blynkgo_manager_ext_t*)  pManager->ext_attr();
     
-    ext->lb_setting_back->del();      free_widget(ext->lb_setting_back);
-    ext->lb_setting_title->del();     free_widget(ext->lb_setting_title);
-    ext->list_setting->del();         free_widget(ext->list_setting);
+    free_widget(ext->lb_setting_back);
+    free_widget(ext->lb_setting_title);
+    free_widget(ext->list_setting);
 
     if(pManager->hasLocalStyle()) {pManager->freeLocalStyle(); } //pIcon->_has_localstyle = false; } // 
     pManager->_created = false;

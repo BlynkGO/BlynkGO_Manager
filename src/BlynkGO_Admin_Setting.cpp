@@ -125,12 +125,12 @@ static lv_res_t admin_setting_signal_cb(lv_obj_t *obj, lv_signal_t sign, void* p
     BlynkGO_Manager* pManager = (BlynkGO_Manager*) obj_admin_setting->_par;
     blynkgo_manager_ext_t* ext = (blynkgo_manager_ext_t*)  pManager->ext_attr();
 
-    ext->sw_admin_lock_mode->del();       free_widget(ext->sw_admin_lock_mode);
-    ext->lb_admin_lock_mode->del();       free_widget(ext->lb_admin_lock_mode);
-    ext->cont_admin_lock_mode->del();     free_widget(ext->cont_admin_lock_mode);
-    ext->list_admin_setting_body->del();  free_widget(ext->list_admin_setting_body);
-    ext->lb_admin_setting_title->del();   free_widget(ext->lb_admin_setting_title);
-    ext->lb_admin_setting_back->del();    free_widget(ext->lb_admin_setting_back);
+    free_widget(ext->sw_admin_lock_mode);
+    free_widget(ext->lb_admin_lock_mode);
+    free_widget(ext->cont_admin_lock_mode);
+    free_widget(ext->list_admin_setting_body);
+    free_widget(ext->lb_admin_setting_title);
+    free_widget(ext->lb_admin_setting_back);
 
     if(ext->obj_admin_setting->hasLocalStyle()) {ext->obj_admin_setting->freeLocalStyle(); } //pIcon->_has_localstyle = false; } // 
     ext->obj_admin_setting->_created = false;
@@ -147,7 +147,7 @@ static void lb_admin_setting_back_onClicked(GWidget* w){
   blynkgo_manager_ext_t* ext= (blynkgo_manager_ext_t*) pManager->ext_attr();
   if(ext->child_setting_standalone) pManager->hidden(true);
 
-  ext->obj_admin_setting->del();    free_widget(ext->obj_admin_setting);
+  free_widget(ext->obj_admin_setting);
 
   MEM_CHECK;
 }
